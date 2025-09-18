@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.12.6-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    ports:
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:15672:15672"
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq/
+    restart: always
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongodbdata:/data/db
+    restart: always
+
+volumes:
+  rabbitmqdata:
+    name: rabbitmqdata
+    external: false
+  mongodbdata:
+    name: mongodbdata
+    external: false

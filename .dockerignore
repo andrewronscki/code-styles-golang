@@ -1,0 +1,13 @@
+api/*.http
+**/Dockerfile
+**/build/
+**/config/
+**/deployments/
+**/.git
+**/vendor/
+**/out/
+.vscode/
+
+Makefile
+.gitignore
+.dockerignore

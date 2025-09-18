@@ -1,0 +1,66 @@
+basePath: /api
+definitions:
+  getbalance.Model:
+    properties:
+      balance:
+        type: number
+      snapshot_date:
+        type: string
+      user_id:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: contato@devtoolshq.dev
+    name: André
+    url: https://www.devtoolshq.dev
+  description: Code styles Golang API Example
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Balance API
+  version: "2.0"
+paths:
+  /balance/user/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Return a balance by user
+      parameters:
+      - description: user_id
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      - description: snapshot_date
+        format: date-time
+        in: query
+        name: snapshot_date
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/getbalance.Model'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Return balance by user
+      tags:
+      - balance
+schemes:
+- http
+swagger: "2.0"

@@ -1,0 +1,47 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": false,
+  "go.coverageOptions": "showCoveredCodeOnly",
+  "go.coverageDecorator": {
+    "type": "gutter",
+    "coveredGutterStyle": "slashgreen",
+    "uncoveredGutterStyle": "slashred"
+  },
+  "go.coverMode": "atomic",
+  "go.coverOnSave": false,
+  "go.coverOnTestPackage": false,
+  "go.formatTool": "gofmt",
+  "go.lintOnSave": "package",
+  "go.toolsManagement.autoUpdate": true,
+  "[go]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[dockercompose]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true
+  },
+  "[dockerfile]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": false
+  },
+  "[dotenv]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": false
+  },
+  "[markdown]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": false
+  }
+}
