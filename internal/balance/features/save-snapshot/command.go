@@ -5,8 +5,8 @@ import (
 	"time"
 
 	balance "github.com/andre/code-styles-golang/internal/balance/domain"
+	"github.com/andre/code-styles-golang/internal/shared/events"
 	"github.com/andre/code-styles-golang/pkg/cqrs"
-	"github.com/andre/code-styles-golang/pkg/datadog/logger"
 )
 
 type Command struct {
@@ -15,6 +15,7 @@ type Command struct {
 
 type CommandHandler struct {
 	repository Repository
+	store      events.EventStore
 }
 
 func (h *CommandHandler) Handle(ctx context.Context, command *Command) (any, error) {
@@ -35,13 +36,14 @@ func (h *CommandHandler) Handle(ctx context.Context, command *Command) (any, err
 
 	balance.SetID(id)
 
-	logger.Info(ctx).Msgf("[%d] created a new snapshot with id: %s", balance.UserID, balance.ID)
+	h.store.AddEvent(balance.RaiseSnapshotCreatedDomainEvent())
 
-	return balance, nil
+	return nil, nil
 }
 
-func NewCommandHandler(repository Repository) cqrs.ICommandHandler[*Command, any] {
+func NewCommandHandler(repository Repository, store events.EventStore) cqrs.ICommandHandler[*Command, any] {
 	return &CommandHandler{
 		repository: repository,
+		store:      store,
 	}
 }

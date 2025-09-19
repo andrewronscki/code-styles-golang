@@ -32,3 +32,12 @@ func (b *Balance) SetID(id string) {
 func (b *Balance) Marshal(dest any) {
 	utils.DeepCopy(b, dest)
 }
+
+func (b *Balance) RaiseSnapshotCreatedDomainEvent() *SnapshotCreatedDomainEvent {
+	event := &SnapshotCreatedDomainEvent{
+		UserID:       b.UserID,
+		SnapshotDate: b.SnapshotDate,
+	}
+
+	return event
+}

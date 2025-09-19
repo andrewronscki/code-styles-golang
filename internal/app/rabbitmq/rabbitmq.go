@@ -22,12 +22,21 @@ func ConfigureRabbitMQ() error {
 				Name:    "save-snapshot",
 				Durable: true,
 			},
+			{
+				Name:    "balance.snapshot-created",
+				Durable: true,
+			},
 		},
 		QueueBinds: []messaging.QueueBind{
 			{
 				Exchange: "balance-exchange",
 				Name:     "save-snapshot",
 				Key:      "snapshot-saved",
+			},
+			{
+				Exchange: "balance-exchange",
+				Name:     "balance.snapshot-created",
+				Key:      "snapshot-created",
 			},
 		},
 	}
